@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const links = [
-  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/#map", label: "Community Map" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" }
 ];
@@ -45,8 +45,6 @@ export default function SiteHeader() {
               {item.label}
             </Link>
           ))}
-          <a href="/#reserve">Reserve username</a>
-          <a href="/#get-involved">Get involved</a>
         </nav>
 
         <div className="header-actions">
@@ -87,12 +85,6 @@ export default function SiteHeader() {
                 {item.label}
               </Link>
             ))}
-            <a href="/#reserve" onClick={() => setOpen(false)}>
-              Reserve username
-            </a>
-            <a href="/#get-involved" onClick={() => setOpen(false)}>
-              Get involved
-            </a>
 
             {user ? (
               <button type="button" className="btn-subtle full" onClick={logout}>

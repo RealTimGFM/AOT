@@ -1,11 +1,41 @@
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import CommunityMapPanel from "@/components/CommunityMapPanel";
 import ReserveForm from "@/components/ReserveForm";
 import VolunteerForm from "@/components/VolunteerForm";
 import { getPosts } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
+
+const montrealPhoneMapEmbed = "https://www.google.com/maps?q=45.5017,-73.5673&z=13&output=embed";
+
+const communityEvents = [
+  {
+    day: "Tonight",
+    title: "Neighbourhood assembly",
+    location: "Esplanade de la Place des Arts",
+    area: "Quartier des Spectacles",
+    position: { lat: 45.50839, lng: -73.56673 },
+    phoneClass: "dot-1"
+  },
+  {
+    day: "Tomorrow",
+    title: "Volunteer onboarding",
+    location: "Centre culturel Calixa-Lavallee",
+    area: "Parc La Fontaine",
+    position: { lat: 45.5274, lng: -73.57049 },
+    phoneClass: "dot-2"
+  },
+  {
+    day: "Weekend",
+    title: "Mutual aid supply run",
+    location: "Marche Atwater",
+    area: "Saint-Henri",
+    position: { lat: 45.48062, lng: -73.57777 },
+    phoneClass: "dot-3"
+  }
+];
 
 const values = ["Solidarity", "Persistence", "Pursuit of justice"];
 
@@ -123,10 +153,21 @@ export default function HomePage() {
                 <div className="phone-top">Community Map</div>
 
                 <div className="phone-map">
-                  <span className="map-dot dot-1" />
-                  <span className="map-dot dot-2" />
-                  <span className="map-dot dot-3" />
-                  <span className="map-dot dot-4" />
+                  <iframe
+                    className="map-embed"
+                    title="Montreal community map preview"
+                    src={montrealPhoneMapEmbed}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                  <div className="phone-map-focus">Montreal</div>
+                  {communityEvents.map((event) => (
+                    <span
+                      key={`${event.day}-${event.title}`}
+                      className={`map-dot ${event.phoneClass}`}
+                      aria-hidden="true"
+                    />
+                  ))}
                 </div>
 
                 <div className="phone-bottom-nav">
@@ -211,10 +252,10 @@ export default function HomePage() {
         <section className="shell map-layout section-gap" id="map">
           <div className="map-copy">
             <span className="tiny-label">Community map</span>
-            <h2>Find your people and take action locally and globally</h2>
+            <h2>Find your people and take action across Montreal</h2>
             <p>
-              This map helps communities discover local events, campaigns, volunteer opportunities,
-              and spaces for collective action.
+              Explore community events, campaigns, volunteer opportunities, and spaces for
+              collective action across the city.
             </p>
 
             <div className="signal-list">
@@ -234,27 +275,7 @@ export default function HomePage() {
           </div>
 
           <div className="map-panel">
-            <div className="map-surface">
-              <div className="location-pin pin-a">Food drive</div>
-              <div className="location-pin pin-b">Town hall</div>
-              <div className="location-pin pin-c">Climate rally</div>
-              <div className="location-pin pin-d">Accessibility workshop</div>
-            </div>
-
-            <div className="map-sidebar">
-              <div className="mini-event">
-                <strong>Tonight</strong>
-                <span>Neighborhood assembly</span>
-              </div>
-              <div className="mini-event">
-                <strong>Tomorrow</strong>
-                <span>Volunteer onboarding</span>
-              </div>
-              <div className="mini-event">
-                <strong>Weekend</strong>
-                <span>Mutual aid supply run</span>
-              </div>
-            </div>
+            <CommunityMapPanel events={communityEvents} />
           </div>
         </section>
 

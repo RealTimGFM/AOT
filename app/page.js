@@ -75,37 +75,42 @@ export default function HomePage() {
 
       <main>
         <section className="hero">
-          <div className="shell hero-grid">
+          <div className="shell hero-grid hero-shell">
             <div className="hero-copy">
-              <span className="eyebrow">Social media for changemakers</span>
-              <h1>The social media of changemakers.</h1>
+              <h1>
+                The social media
+                <span className="hero-title-accent">of changemakers.</span>
+              </h1>
               <p className="lead">
-                Activists Of Tomorrow is a community-driven social platform built for social and
-                environmental justice. Discover causes, connect with others, and turn attention
-                into meaningful action.
+                A home for people working toward a more just and sustainable future. Find your
+                cause, meet your community, and turn care into action.
               </p>
 
-              <div className="cta-row">
-                <a href="#reserve" className="btn-primary">
-                  Reserve your username
-                </a>
-                <a href="#map" className="btn-secondary">
-                  Explore community map
-                </a>
-              </div>
+              <div className="hero-actions">
+                <div className="cta-row hero-cta-row">
+                  <a href="#reserve" className="btn-primary">
+                    Reserve your username
+                  </a>
+                  <a href="#map" className="btn-secondary">
+                    Explore community map
+                  </a>
+                </div>
 
-              <div className="metric-row">
-                <div className="stat-card">
-                  <strong>12K+</strong>
-                  <span>community members</span>
-                </div>
-                <div className="stat-card">
-                  <strong>240</strong>
-                  <span>local circles</span>
-                </div>
-                <div className="stat-card">
-                  <strong>85</strong>
-                  <span>active campaigns</span>
+                <div className="hero-divider" aria-hidden="true" />
+
+                <div className="metric-row hero-metric-row">
+                  <div className="stat-card">
+                    <strong>12K+</strong>
+                    <span>community members</span>
+                  </div>
+                  <div className="stat-card">
+                    <strong>240</strong>
+                    <span>local circles</span>
+                  </div>
+                  <div className="stat-card">
+                    <strong>85</strong>
+                    <span>active campaigns</span>
+                  </div>
                 </div>
               </div>
             </div>
